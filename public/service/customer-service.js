@@ -5,8 +5,8 @@ const criaNovaLinha = (nome, email) => {
                     <td>${email}</td>
                     <td>
                         <ul class="tabela__botoes-controle">
-                            <li><a href="../telas/edita_cliente.html" class="botao-simples botao-simples--editar">Editar</a></li>
-                            <li><button class="botao-simples botao-simples--excluir" type="button">Excluir</button></li>
+                            <li><a href="../pages/customers_edit.html" class="botao-simples botao-simples--editar">Edit</a></li>
+                            <li><button class="botao-simples botao-simples--excluir" type="button">Delete</button></li>
                         </ul>
                     </td> 
                     `
@@ -27,5 +27,5 @@ const listaClientes = () => {
 listaClientes()
 .then(data => {
         data.forEach(elemento => {
-        tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email))
+        tabela.appendChild(criaNovaLinha(elemento.name, elemento.email))
 })})
