@@ -12,7 +12,7 @@ CRUD used for asynchronous JavaScript studies.
 ## To run project
 
 * In the project directory, you can run, to install dependences:
->npm start
+>npm install
 
 * To run json-server using db.json file as a fake server run:
 >npx json-server db.json
