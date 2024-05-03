@@ -9,6 +9,7 @@
   "author": "Renan Pina <renanfpina@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "browser-sync": "^3.0.2",
     "eslint": "^9.0.0",
     "json-server": "^1.0.0-alpha.23",
     "pdev": "^1.0.2"
