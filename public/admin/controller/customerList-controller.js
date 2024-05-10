@@ -1,6 +1,6 @@
 import { customerService } from '../service/customer-service.js'
 
-const createNewLine = (name, email) => {
+const createNewLine = (name, email, id) => {
     const newLine = document.createElement('tr')
     const content = `
         <td class="td" data-td>${name}</td>
@@ -13,6 +13,7 @@ const createNewLine = (name, email) => {
                     </td> 
                     `
     newLine.innerHTML = content
+    newLine.dataset.id = id
     return newLine
 }
 
@@ -20,6 +21,20 @@ const table = document.querySelector('[data-table]')
 
 customerService.customerList()
 .then(data => {
-        data.forEach(element => {
-        table.appendChild(createNewLine(element.name, element.email))
-})})
+    data.forEach(element => {
+        table.appendChild(createNewLine(element.name, element.email, element.id))
+    })
+})
+
+table.addEventListener('click', event => {
+    const clickedElement = event.target
+    if(clickedElement.className === 'botao-simples botao-simples--excluir') {
+        console.log('entrou no if')
+        const line = clickedElement.closest('[data-id]')
+        const id = line.dataset.id
+        customerService.customerDelete(id)
+        .then( () => {
+            line.remove()
+        })
+    }
+})

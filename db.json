@@ -6,11 +6,6 @@
       "id": "1"
     },
     {
-      "name": "Jane Doe",
-      "email": "jane.doe@foo.com",
-      "id": "2"
-    },
-    {
       "id": "1bfd",
       "name": "Carls",
       "email": "carls@bar.com"
@@ -19,11 +14,6 @@
       "id": "6551",
       "name": "Farls",
       "email": "farls@foo.com"
-    },
-    {
-      "id": "9f39",
-      "name": "Paul",
-      "email": "paul@bar.com"
     }
   ]
 }
