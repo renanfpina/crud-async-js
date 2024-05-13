@@ -1,19 +1,14 @@
 {
   "profile": [
     {
-      "name": "Jhon Doe",
+      "name": "Jhon",
       "email": "Jhon.Doe@foo.com",
       "id": "1"
     },
     {
-      "id": "1bfd",
-      "name": "Carls",
-      "email": "carls@bar.com"
-    },
-    {
-      "id": "6551",
-      "name": "Farls",
-      "email": "farls@foo.com"
+      "name": "Bar",
+      "email": "bar@foo.com",
+      "id": "6551"
     }
   ]
 }

@@ -4,14 +4,14 @@ const createNewLine = (name, email, id) => {
     const newLine = document.createElement('tr')
     const content = `
         <td class="td" data-td>${name}</td>
-                    <td>${email}</td>
-                    <td>
-                        <ul class="tabela__botoes-controle">
-                            <li><a href="../pages/customers_edit.html" class="botao-simples botao-simples--editar">Edit</a></li>
-                            <li><button class="botao-simples botao-simples--excluir" type="button">Delete</button></li>
-                        </ul>
-                    </td> 
-                    `
+        <td>${email}</td>
+        <td>
+            <ul class="tabela__botoes-controle">
+                <li><a href="../pages/customer_edit.html?id=${id}" class="botao-simples botao-simples--editar">Edit</a></li>
+                <li><button class="botao-simples botao-simples--excluir" type="button">Delete</button></li>
+            </ul>
+        </td> 
+    `
     newLine.innerHTML = content
     newLine.dataset.id = id
     return newLine
@@ -29,7 +29,6 @@ customerService.customerList()
 table.addEventListener('click', event => {
     const clickedElement = event.target
     if(clickedElement.className === 'botao-simples botao-simples--excluir') {
-        console.log('entrou no if')
         const line = clickedElement.closest('[data-id]')
         const id = line.dataset.id
         customerService.customerDelete(id)
