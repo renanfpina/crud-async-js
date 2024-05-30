@@ -1,25 +1,33 @@
 import { customerService } from '../service/customer-service.js'
 
-const newUrl = new URL(window.location)
-const customerId = newUrl.searchParams.get('id')
+( async () => {
+    const newUrl = new URL(window.location)
+    const customerId = newUrl.searchParams.get('id')
 
-const inputName = document.querySelector('[data-name]')
-const inputEmail = document.querySelector('[data-email]')
+    const inputName = document.querySelector('[data-name]')
+    const inputEmail = document.querySelector('[data-email]')
 
-customerService.getCustomerById(customerId)
-    .then(data => {
+    try {
+        const data = await customerService.getCustomerById(customerId)
         inputName.value = data.name
         inputEmail.value = data.email
-    })
+    }
+    catch(error) {
+        console.log(error)
+        window.location.href = '/admin/pages/error.html'
+    }
 
-const form = document.querySelector('[data-form]')
-form.addEventListener('submit', event => {
-    event.preventDefault()
-    // const name = event.target.querySelector('[data-name]').value
-    // const email = event.target.querySelector('[data-email]').value
+    const form = document.querySelector('[data-form]')
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault()
 
-    customerService.customerUpdate(customerId, inputName.value, inputEmail.value)
-        .then(() => {
+        try {
+            await customerService.customerUpdate(customerId, inputName.value, inputEmail.value)
             window.location.href = '/admin/pages/update_success.html'
-        })
-})
+        }
+        catch(error) {
+            console.log(error)
+            window.location.href = '/admin/pages/error.html'
+        }
+    })
+})()

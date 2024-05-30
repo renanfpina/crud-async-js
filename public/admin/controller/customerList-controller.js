@@ -18,22 +18,33 @@ const createNewLine = (name, email, id) => {
 }
 
 const table = document.querySelector('[data-table]')
-
-customerService.customerList()
-.then(data => {
-    data.forEach(element => {
-        table.appendChild(createNewLine(element.name, element.email, element.id))
-    })
-})
-
-table.addEventListener('click', event => {
+table.addEventListener('click', async (event) => {
     const clickedElement = event.target
     if(clickedElement.className === 'botao-simples botao-simples--excluir') {
-        const line = clickedElement.closest('[data-id]')
-        const id = line.dataset.id
-        customerService.customerDelete(id)
-        .then( () => {
+        try {
+            const line = clickedElement.closest('[data-id]')
+            const id = line.dataset.id
+            await customerService.customerDelete(id)
             line.remove()
-        })
+        }
+        catch(error) {
+            console.log(error)
+            window.location.href="../pages/error.html"
+        }
     }
 })
+
+const renderlist = async () => {
+    try {
+        const customerList = await customerService.customerList()
+        customerList.forEach(element => {
+            table.appendChild(createNewLine(element.name, element.email, element.id))
+        })
+    }
+    catch(error){
+        console.log(error)
+        window.location.href="../pages/error.html"
+    }
+}
+
+renderlist()

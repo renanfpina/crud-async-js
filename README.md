@@ -16,7 +16,6 @@ CRUD used for asynchronous JavaScript studies.
 
 * To run json-server using db.json file as a fake server run:
 >npx json-server db.json
->npx browser-sync start --server --file . --host --port 5000 --startPath admin/pages/customer_list.html
 
 * Note: if you use a ./public folder, the json-server can run a static web server for HTML and JS as well.
 

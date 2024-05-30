@@ -1,7 +1,10 @@
 const customerList = () => {
     return fetch(`http://localhost:3000/profile`)
     .then( response => {
-        return response.json()
+        if (response.ok) {
+            return response.json()
+        }
+        throw new Error('Unable to list customers')
     })
 }
 
@@ -14,7 +17,10 @@ const customerRegister = (name, email) => {
         body: JSON.stringify({name, email})
     })
     .then( response => {
-        return response.body
+        if (response.ok) {
+            return response.body
+        }
+        throw new Error('Unable to register customer')
     })
 }
 
@@ -23,14 +29,19 @@ const customerDelete = (id) => {
         method: 'DELETE'
     })
     .then( response => {
-        return response.body
+        if (!response.ok) {
+            throw new Error('Unable to delete customer')
+        }   
     })
 }
 
 const getCustomerById = (id) => {
     return fetch(`http://localhost:3000/profile/${id}`)
     .then( response => {
-        return response.json()
+        if (response.ok) {
+            return response.json()
+        }
+        throw new Error('Unable to detail customer')
     })
 }
 
@@ -46,7 +57,10 @@ const customerUpdate = (id, name, email) => {
         })
     })
     .then( response => {
-        return response.json()
+        if (response.ok) {
+            return response.json()
+        }
+        throw new Error('Unable to update customer')
     })
 }
 
